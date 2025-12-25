@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REXXY XITER - Solusi Gaming Terbaik</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #6a11cb;
+            --secondary: #2575fc;
+            --accent: #ff2d75;
+            --dark: #0f0f1a;
+            --darker: #080811;
+            --light: #f0f0f5;
+            --card-bg: rgba(15, 15, 26, 0.8);
+        }
+
+        body {
+            background: var(--darker);
+            color: var(--light);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        #bg-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+            opacity: 0.3;
+        }
+
+        .gradient-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(-45deg, #6a11cb, #2575fc, #ff2d75, #6a11cb);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            opacity: 0.1;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 0;
+            position: relative;
+        }
+
+        .profile-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .profile-card {
+            background: linear-gradient(135deg, rgba(106, 17, 203, 0.3), rgba(37, 117, 252, 0.3), rgba(255, 45, 117, 0.3));
+            border-radius: 20px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            animation: floatProfile 6s ease-in-out infinite;
+        }
+
+        @keyframes floatProfile {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .profile-pic {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 3px solid transparent;
+            background: linear-gradient(45deg, var(--primary), var(--secondary), var(--accent));
+            background-origin: border-box;
+            box-shadow: 0 0 20px rgba(106, 17, 203, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .profile-pic img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-info {
+            text-align: left;
+        }
+
+        .profile-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(to right, var(--primary), var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .verified-badge {
+            color: #2575fc;
+            font-size: 1.2rem;
+        }
+
+        .profile-tagline {
+            font-size: 1rem;
+            color: #a0a0c0;
+            margin-top: 5px;
+        }
+
+        .logo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            border: 3px solid transparent;
+            background: linear-gradient(45deg, var(--primary), var(--secondary), var(--accent));
+            background-origin: border-box;
+            box-shadow: 0 0 20px rgba(106, 17, 203, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            animation: rotateGradient 10s linear infinite;
+        }
+
+        @keyframes rotateGradient {
+            0% { filter: hue-rotate(0deg); }
+            100% { filter: hue-rotate(360deg); }
+        }
+
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .title {
+            font-size: 2.8rem;
+            margin-bottom: 5px;
+            background: linear-gradient(to right, #6a11cb, #2575fc, #ff2d75);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 10px rgba(106, 17, 203, 0.3);
+            animation: textGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes textGlow {
+            0% { text-shadow: 0 0 10px rgba(106, 17, 203, 0.3); }
+            100% { text-shadow: 0 0 20px rgba(37, 117, 252, 0.5), 0 0 30px rgba(255, 45, 117, 0.3); }
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            color: #a0a0c0;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .version-badge {
+            display: inline-block;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(106, 17, 203, 0.7); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(106, 17, 203, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(106, 17, 203, 0); }
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin: 40px 0 20px;
+            text-align: center;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            border-radius: 3px;
+            animation: linePulse 2s infinite;
+        }
+
+        @keyframes linePulse {
+            0% { width: 100px; }
+            50% { width: 150px; }
+            100% { width: 100px; }
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .product-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            border: 1px solid transparent;
+            background-clip: padding-box;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            backdrop-filter: blur(10px);
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary), var(--secondary), var(--accent));
+            animation: gradientMove 3s linear infinite;
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 200% 0%; }
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .product-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .product-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .product-badge {
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            color: white;
+            padding: 3px 10px;
+            border-radius: 10px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            animation: badgePulse 2s infinite;
+        }
+
+        @keyframes badgePulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .product-features {
+            list-style: none;
+            margin: 15px 0;
+        }
+
+        .product-features li {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            transition: all 0.3s;
+        }
+
+        .product-features li:hover {
+            background: rgba(255, 255, 255, 0.05);
+            padding-left: 10px;
+            border-radius: 5px;
+        }
+
+        .product-features li:last-child {
+            border-bottom: none;
+        }
+
+        .product-features li i {
+            margin-right: 10px;
+            color: var(--secondary);
+        }
+
+        .product-price {
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-align: center;
+            margin: 20px 0;
+            background: linear-gradient(to right, #ffd700, #ffaa00);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: priceGlow 2s infinite alternate;
+        }
+
+        @keyframes priceGlow {
+            0% { text-shadow: 0 0 5px rgba(255, 215, 0, 0.5); }
+            100% { text-shadow: 0 0 15px rgba(255, 215, 0, 0.8), 0 0 25px rgba(255, 215, 0, 0.5); }
+        }
+
+        .buy-btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .buy-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .buy-btn:hover::before {
+            left: 100%;
+        }
+
+        .buy-btn:hover {
+            background: linear-gradient(45deg, var(--secondary), var(--primary));
+            box-shadow: 0 5px 15px rgba(37, 117, 252, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .buy-btn i {
+            margin-right: 8px;
+        }
+
+        .drag-menu {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .drag-tab {
+            padding: 10px 20px;
+            background: var(--card-bg);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 1px solid transparent;
+            background-clip: padding-box;
+            position: relative;
+            backdrop-filter: blur(10px);
+        }
+
+        .drag-tab.active {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+        }
+
+        .drag-tab::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 8px;
+            padding: 1px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary), var(--accent));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+        }
+
+        /* New Section: Benefits */
+        .benefits-section {
+            margin: 60px 0;
+            text-align: center;
+        }
+
+        .benefits-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .benefit-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            border: 1px solid transparent;
+            background-clip: padding-box;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        .benefit-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary), var(--secondary), var(--accent));
+        }
+
+        .benefit-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .benefit-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--light);
+        }
+
+        .benefit-desc {
+            color: #a0a0c0;
+            font-size: 0.95rem;
+        }
+
+        .guarantee-banner {
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 40px;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            animation: pulse 3s infinite;
+        }
+
+        .guarantee-text {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: white;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 50px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #a0a0c0;
+        }
+
+        .contact-info {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .contact-info a {
+            color: var(--secondary);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .contact-info a:hover {
+            color: var(--accent);
+            text-shadow: 0 0 10px rgba(255, 45, 117, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .drag-menu {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .drag-tab {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .profile-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .profile-info {
+                text-align: center;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .benefits-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <video id="bg-video" autoplay muted loop>
+        <source src="https://files.catbox.moe/rhm470.mp4" type="video/mp4">
+    </video>
+    
+    <div class="gradient-bg"></div>
+
+    <div class="container">
+        <header>
+            <div class="profile-container">
+                <div class="profile-card">
+                    <div class="profile-pic">
+                        <img src="https://files.catbox.moe/fckqgh.jpg" alt="REXXY Logo">
+                    </div>
+                    <div class="profile-info">
+                        <h2 class="profile-name">REXXY XITER <i class="fas fa-check-circle verified-badge"></i></h2>
+                        <p class="profile-tagline">Solusi Gaming Terbaik</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="logo">
+                <img src="https://files.catbox.moe/fckqgh.jpg" alt="REXXY Logo">
+            </div>
+            <h1 class="title">LIST PRODUK REXXY</h1>
+            <div class="version-badge">New Update v3.0</div>
+        </header>
+
+        <section>
+            <h2 class="section-title">LIST INJECT ANDROID</h2>
+            
+            <div class="drag-menu">
+                <div class="drag-tab active" data-tab="v1">FATALIC</div>
+                <div class="drag-tab" data-tab="v2">ZENITS</div>
+                <div class="drag-tab" data-tab="v3">ZKG HEADLOCK</div>
+                <div class="drag-tab" data-tab="private">PRIVATE V3</div>
+            </div>
+
+            <div class="products-grid">
+                <div class="product-card" data-version="v1">
+                    <div class="product-header">
+                        <h3 class="product-name">FATALIC</h3>
+                        <span class="product-badge">APP INJECT PREMIUM 💎</span>
+                    </div>
+                    <ul class="product-features">
+<li><i class="fas fa-lock"></i> LOCK HEAD</li>
+                        <li><i class="fas fa-tachometer-alt"></i> POINTER SPEED X10</li>
+                        <li><i class="fas fa-sliders-h"></i> AIMHEAD SAFE V1</li>
+                        <li><i class="fas fa-compress-alt"></i> AIMLOCK SAFE V1</li>
+                        <li><i class="fas fa-crosshairs"></i> FUNCTION SENSI XY+</li>
+                        <li><i class="fas fa-hands-helping"></i> AIM ASSISTED+</li>
+                    </ul>
+                    <div class="product-price">RP. 30.000</div>
+                    <a href="https://wa.me/6282130754750?text=Halo%20REXXY%20XITER,%20saya%20ingin%20membeli%20Inject%20Fantalic" class="buy-btn" target="_blank">
+                        <i class="fas fa-shopping-cart"></i> BUY FILE
+                    </a>
+                </div>
+
+                <div class="product-card" data-version="v2">
+                    <div class="product-header">
+                        <h3 class="product-name">ZENITS</h3>
+                        <span class="product-badge">APP INJECT PREMIUM 💎</span>
+                    </div>
+                    <ul class="product-features">
+<li><i class="fas fa-lock"></i> LOCK HEAD</li>
+                        <li><i class="fas fa-tachometer-alt"></i> POINTER SPEED X10</li>
+                        <li><i class="fas fa-sliders-h"></i> AIMHEAD SAFE V2</li>
+                        <li><i class="fas fa-compress-alt"></i> AIMLOCK SAFE V2</li>
+                        <li><i class="fas fa-crosshairs"></i> FUNCTION SENSI XY+</li>
+                        <li><i class="fas fa-hands-helping"></i> AIM ASSISTED+</li>
+                    </ul>
+                    <div class="product-price">RP. 50.000</div>
+                    <a href="https://wa.me/6282130754750?text=Halo%20REXXY%20XITER,%20saya%20ingin%20membeli%20Injec%20Zenits" class="buy-btn" target="_blank">
+                        <i class="fas fa-shopping-cart"></i> BUY FILE
+                    </a>
+                </div>
+
+                <div class="product-card" data-version="v3">
+                    <div class="product-header">
+                        <h3 class="product-name">ZKG HEADLOCK</h3>
+                        <span class="product-badge">APP INJECT PREMIUM 💎</span>
+                    </div>
+                    <ul class="product-features">
+<li><i class="fas fa-lock"></i> LOCK HEAD</li>
+                        <li><i class="fas fa-tachometer-alt"></i> POINTER SPEED X10</li>
+                        <li><i class="fas fa-sliders-h"></i> AIMHEAD SAFE V3</li>
+                        <li><i class="fas fa-compress-alt"></i> AIMLOCK SAFE V3</li>
+                        <li><i class="fas fa-crosshairs"></i> FUNCTION SENSI XY+</li>
+                        <li><i class="fas fa-hands-helping"></i> AIM ASSISTED+</li>
+                    </ul>
+                    <div class="product-price">RP. 100.000</div>
+                    <a href="https://wa.me/6282130754750?text=Halo%20REXXY%20XITER,%20saya%20ingin%20membeli%I20nject%Zkg_Headlock" class="buy-btn" target="_blank">
+                        <i class="fas fa-shopping-cart"></i> BUY FILE
+                    </a>
+                </div>
+
+                <!-- PRODUK BARU: Drag Headshot Private -->
+                <div class="product-card" data-version="private">
+                    <div class="product-header">
+                        <h3 class="product-name">PRIB PRIVATE V3</h3>
+                        <span class="product-badge">APP INJECT PREMIUM 💎</span>
+                    </div>
+                    <ul class="product-features">
+                        <li><i class="fas fa-lock"></i> LOCK HEAD</li>
+                        <li><i class="fas fa-tachometer-alt"></i> POINTER SPEED X10</li>
+                        <li><i class="fas fa-sliders-h"></i> AIMHEAD SAFE V4</li>
+                        <li><i class="fas fa-compress-alt"></i> AIMLOCK SAFE V4</li>
+                        <li><i class="fas fa-crosshairs"></i> FUNCTION SENSI XY+</li>
+                        <li><i class="fas fa-hands-helping"></i> AIM ASSISTED+</li>
+                    </ul>
+                    <div class="product-price">RP. 150.000</div>
+                    <a href="https://wa.me/6282130754750?text=Halo%20REXXY%20XITER,%20saya%20ingin%20membeli%20Inject%20Private" class="buy-btn" target="_blank">
+                        <i class="fas fa-shopping-cart"></i> BUY FILE
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- New Section: Benefits -->
+        <section class="benefits-section">
+            <h2 class="section-title">Yang Anda Dapatkan Setiap Pembelian</h2>
+            
+            <div class="benefits-container">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-file-download"></i>
+                    </div>
+                    <h3 class="benefit-title">File/App yang Dibeli</h3>
+                    <p class="benefit-desc">Anda akan mendapatkan file atau aplikasi lengkap sesuai dengan produk yang dipilih, siap digunakan.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <h3 class="benefit-title">Tutorial Pasang Lengkap</h3>
+                    <p class="benefit-desc">Panduan langkah demi langkah untuk instalasi dan penggunaan dengan penjelasan yang mudah dipahami.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-user-cog"></i>
+                    </div>
+                    <h3 class="benefit-title">Aim Berubah Drastis Meningkat</h3>
+                    <p class="benefit-desc">Konfigurasi khusus yang telah dioptimalkan untuk performa terbaik sesuai kebutuhan Anda.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-sliders-h"></i>
+                    </div>
+                    <h3 class="benefit-title">Drag Menjadi Super Ringan</h3>
+                    <p class="benefit-desc">Pengaturan sensitivitas yang telah diuji untuk akurasi maksimal dalam berbagai situasi permainan.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3 class="benefit-title">Dukungan Teknis 24/7</h3>
+                    <p class="benefit-desc">Bantuan teknis penuh jika mengalami kendala dalam penggunaan produk yang dibeli.</p>
+                </div>
+            </div>
+            
+            <div class="guarantee-banner">
+                <p class="guarantee-text">Jangan ragukan produk kami, produk kami sudah teruji dan berkualitas tinggi!</p>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2023 REXXY XITER. All rights reserved.</p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fab fa-whatsapp"></i>
+                    <a href="https://wa.me/6282130754750" target="_blank">+6282130754750</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:reyhanrizkiibrahim8@gmail.com">reyhanrizkiibrahim8@gmail.com</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Tab functionality for Drag Headshot versions
+        document.querySelectorAll('.drag-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                // Remove active class from all tabs in the same section
+                const parentSection = this.closest('section');
+                parentSection.querySelectorAll('.drag-tab').forEach(t => {
+                    t.classList.remove('active');
+                });
+                
+                // Add active class to clicked tab
+                this.classList.add('active');
+                
+                const version = this.getAttribute('data-tab');
+                
+                // Show/hide products based on selected version
+                parentSection.querySelectorAll('.product-card[data-version]').forEach(card => {
+                    if (card.getAttribute('data-version') === version) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Initially show V1 products
+        document.querySelector('.drag-tab[data-tab="v1"]').click();
+    </script>
+</body>
+</html>
